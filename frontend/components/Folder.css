@@ -1,0 +1,149 @@
+.rb-folder-shell {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rb-folder-expanded {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  transition:
+    max-height 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 350ms ease,
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    margin-bottom 500ms ease;
+}
+
+.rb-folder-shell.is-open .rb-folder-expanded {
+  max-height: 900px;
+  margin-bottom: 54px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.rb-folder-scale {
+  transform-origin: center;
+}
+
+.rb-folder {
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+
+.rb-folder:hover,
+.rb-folder.is-open {
+  transform: translateY(-8px);
+}
+
+.rb-folder-back {
+  position: relative;
+  width: 100px;
+  height: 80px;
+  border-radius: 0 10px 10px;
+  background: var(--folder-back-color);
+}
+
+.rb-folder-back::after {
+  position: absolute;
+  bottom: 98%;
+  left: 0;
+  width: 30px;
+  height: 10px;
+  border-radius: 5px 5px 0 0;
+  background: var(--folder-back-color);
+  content: "";
+}
+
+.rb-folder-paper {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  z-index: 2;
+  width: 70%;
+  height: 80%;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border-radius: 10px;
+  color: var(--text-soft);
+  background: var(--panel-muted);
+  font-size: 9px;
+  font-weight: 800;
+  text-align: center;
+  transform: translate(-50%, 10%);
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), height 320ms ease;
+}
+
+.rb-folder-paper:nth-child(2) {
+  width: 80%;
+  height: 70%;
+  background: var(--panel-light);
+}
+
+.rb-folder-paper:nth-child(3) {
+  width: 90%;
+  height: 60%;
+  background: var(--panel);
+}
+
+.rb-folder-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 5px 10px 10px;
+  background: var(--folder-color);
+  transform-origin: bottom;
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.rb-folder:hover .rb-folder-paper {
+  transform: translate(-50%, 0);
+}
+
+.rb-folder:hover .rb-folder-front,
+.rb-folder.is-open .rb-folder-front {
+  transform: skew(15deg) scaleY(0.6);
+}
+
+.rb-folder:hover .rb-folder-front.right,
+.rb-folder.is-open .rb-folder-front.right {
+  transform: skew(-15deg) scaleY(0.6);
+}
+
+.rb-folder.is-open .paper-1 {
+  transform: translate(calc(-120% + var(--paper-x)), calc(-70% + var(--paper-y))) rotate(-15deg);
+}
+
+.rb-folder.is-open .paper-2 {
+  height: 80%;
+  transform: translate(calc(10% + var(--paper-x)), calc(-70% + var(--paper-y))) rotate(15deg);
+}
+
+.rb-folder.is-open .paper-3 {
+  height: 80%;
+  transform: translate(calc(-50% + var(--paper-x)), calc(-100% + var(--paper-y))) rotate(5deg);
+}
+
+.rb-folder.is-open .rb-folder-paper:hover {
+  z-index: 4;
+  scale: 1.08;
+}
+
+.rb-folder:focus-visible {
+  border-radius: 10px;
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rb-folder-expanded,
+  .rb-folder,
+  .rb-folder-paper,
+  .rb-folder-front {
+    transition: none;
+  }
+}

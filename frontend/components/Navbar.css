@@ -1,0 +1,124 @@
+.portfolio-navbar {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px 20px 0 0;
+  background: color-mix(in srgb, var(--panel) 96%, transparent);
+  box-shadow: 0 12px 32px rgba(79, 62, 50, 0.08);
+}
+
+.navbar-avatar {
+  flex: 0 0 auto;
+  display: flex;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  box-shadow: 0 5px 16px rgba(79, 62, 50, 0.12);
+  transition: transform 180ms ease;
+}
+
+.navbar-avatar:hover {
+  transform: scale(1.08);
+}
+
+.navbar-avatar.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.navbar-avatar img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-icon-dock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 64px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--panel-light);
+}
+
+.navbar-icon-item {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--panel);
+  color: var(--muted-strong);
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.navbar-icon-item:hover,
+.navbar-icon-item.active {
+  border-color: rgba(217, 119, 87, 0.58);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.navbar-icon-item a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.navbar-icon-item svg {
+  width: 21px;
+  height: 21px;
+}
+
+.navbar-icon-label {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+  padding: 4px 7px;
+  border: 1px solid #403a35;
+  border-radius: 6px;
+  background: #2d2a26;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@media (max-width: 620px) {
+  .portfolio-navbar {
+    min-height: 82px;
+    gap: 14px;
+    padding: 8px 14px;
+  }
+
+  .navbar-avatar img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar-icon-dock {
+    gap: 4px;
+    min-height: 58px;
+    padding: 4px;
+  }
+}

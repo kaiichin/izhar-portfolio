@@ -11,5 +11,7 @@ yarn-error.log*
 pnpm-debug.log*
 dev-server.*.log
 portfolio-*.png
+*.tsbuildinfo
+graphify-out/
 
 .vercel

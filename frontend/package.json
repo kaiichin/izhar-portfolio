@@ -9,11 +9,18 @@
     "test": "node scripts/portfolio-check.mjs"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@react-three/rapier": "^2.2.0",
     "framer-motion": "^12.38.0",
+    "gsap": "^3.15.0",
     "lucide-react": "^0.468.0",
-    "next": "15.5.15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "meshline": "^3.3.1",
+    "motion": "^13.1.0",
+    "next": "^15.5.23",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.160.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",

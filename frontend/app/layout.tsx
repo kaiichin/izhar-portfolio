@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
+import PortfolioLayout from "../components/PortfolioLayout";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -8,10 +9,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap"
+const jetBrainsMono = localFont({
+  src: "./fonts/JetBrainsMonoNLNerdFontMono-Regular.ttf",
+  variable: "--font-main",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -56,8 +57,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+      <body className={jetBrainsMono.variable}>
+        <PortfolioLayout>{children}</PortfolioLayout>
       </body>
     </html>
   );
