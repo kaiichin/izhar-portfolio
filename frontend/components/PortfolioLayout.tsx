@@ -1,20 +1,28 @@
+// Layout utama: logo + menu + tombol dark mode + sidebar kontak.
+// Semua halaman otomatis dibungkus layout ini (lihat app/layout.tsx).
+
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { BriefcaseBusiness, Download, Github, Linkedin, Mail, MapPin, MessageCircle } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
-import { profile } from "../data/portfolio";
+import { profile, ui } from "../data/portfolio";
 import Lanyard from "./InteractiveLanyard";
 import { NavigationDock, type NavPage } from "./Navbar";
 import StarBorder from "./StarBorder";
 
-type PortfolioLayoutProps = {
-  children: ReactNode;
-};
-
+// URL → nama halaman aktif (untuk highlight menu)
 const pageNames: Record<string, NavPage> = {
   "/": "About",
   "/projects": "Projects",
@@ -23,7 +31,7 @@ const pageNames: Record<string, NavPage> = {
   "/contact": "Contact",
 };
 
-export default function PortfolioLayout({ children }: PortfolioLayoutProps) {
+export default function PortfolioLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const activePage = pageNames[pathname] ?? "About";
   const [darkMode, setDarkMode] = useState(false);
@@ -43,17 +51,17 @@ export default function PortfolioLayout({ children }: PortfolioLayoutProps) {
 
   return (
     <main className="portfolio-page">
-      <Link href="/" className="site-logo" aria-label="About">
+      <Link href="/" className="site-logo" aria-label={ui.navigation.about}>
         <Image
-          src="/profile/logo.jpg"
-          alt="Izhar Octafirlian Susilo"
+          src={profile.logoPath}
+          alt={profile.name}
           width={42}
           height={42}
           priority
         />
       </Link>
 
-      <nav className="standalone-nav-dock" aria-label="Main navigation">
+      <nav className="standalone-nav-dock" aria-label={ui.navigation.main}>
         <NavigationDock activePage={activePage} />
       </nav>
 
@@ -66,7 +74,7 @@ export default function PortfolioLayout({ children }: PortfolioLayoutProps) {
         <span className="theme-switch-track" aria-hidden="true">
           <span className="theme-switch-thumb" />
         </span>
-        <span>Dark Mode</span>
+        <span>{ui.shared.darkMode}</span>
       </label>
 
       <Lanyard
@@ -82,63 +90,73 @@ export default function PortfolioLayout({ children }: PortfolioLayoutProps) {
           className="sidebar-contact-card"
           color="#d97757"
           speed="7s"
-          aria-label="Contact information"
+          aria-label={ui.shared.contactInformation}
         >
           <div className="sidebar-contact-content">
-          <div className="sidebar-contact-heading">
-            <h2>{profile.name}</h2>
-            <a
-              className="sidebar-cv-button"
-              href="/resume/Izhar_Octafirlian_Susilo.pdf"
-              download
-            >
-              <Download aria-hidden="true" />
-              Download CV
-            </a>
-          </div>
-
-          <div className="sidebar-contact-row">
-            <MapPin aria-hidden="true" />
-            <div>
-              <span>Location</span>
-              <p>{profile.location}</p>
+            <div className="sidebar-contact-heading">
+              <h2>{profile.name}</h2>
+              <a
+                className="sidebar-cv-button"
+                href={profile.resumePath}
+                download
+              >
+                <Download aria-hidden="true" />
+                {ui.shared.downloadCv}
+              </a>
             </div>
-          </div>
 
-          <div className="sidebar-contact-row">
-            <BriefcaseBusiness aria-hidden="true" />
-            <div>
-              <span>Availability</span>
-              <p>{profile.availability}</p>
+            <div className="sidebar-contact-row">
+              <MapPin aria-hidden="true" />
+              <div>
+                <span>{ui.shared.location}</span>
+                <p>{profile.location}</p>
+              </div>
             </div>
-          </div>
 
-          <div className="sidebar-social-links">
-            <a href={`mailto:${profile.email}`} aria-label="Email" title="Email">
-              <Mail />
-            </a>
-            <a href="https://github.com/kaiichin" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
-              <Github />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/izhar-octafirlian-susilo"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-            >
-              <Linkedin />
-            </a>
-            <a
-              href="https://wa.me/6281524102005"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-              title="WhatsApp"
-            >
-              <MessageCircle />
-            </a>
-          </div>
+            <div className="sidebar-contact-row">
+              <BriefcaseBusiness aria-hidden="true" />
+              <div>
+                <span>{ui.shared.availability}</span>
+                <p>{profile.availability}</p>
+              </div>
+            </div>
+
+            <div className="sidebar-social-links">
+              <a
+                href={`mailto:${profile.email}`}
+                aria-label={ui.shared.email}
+                title={ui.shared.email}
+              >
+                <Mail />
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={ui.shared.github}
+                title={ui.shared.github}
+              >
+                <Github />
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={ui.shared.linkedin}
+                title={ui.shared.linkedin}
+              >
+                <Linkedin />
+              </a>
+              <a
+                href={profile.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={ui.shared.whatsapp}
+                title={ui.shared.whatsapp}
+              >
+                <MessageCircle />
+              </a>
+            </div>
           </div>
         </StarBorder>
       </aside>

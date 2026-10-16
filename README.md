@@ -1,81 +1,88 @@
 # Izhar Susilo Portfolio
 
-Professional internship portfolio for Izhar Octafirlian Susilo, a Computer Science student building practical software across AI systems, web applications, and interactive technology.
+Website portfolio untuk melamar internship. Live: https://izharsusilo.vercel.app
 
-Live site: https://izharsusilo.vercel.app
+## Mau ganti teks / link? Cukup edit 1 file
 
-## Highlights
+Buka: `frontend/data/portfolio.ts`
 
-- Single-page portfolio built with Next.js, TypeScript, and Tailwind CSS.
-- Recruiter-friendly sections for profile, experience, skills, projects, and contact.
-- Featured projects: ODOL Truck Detection, HomeHeal, and The Cabin.
-- Resume download and direct links to GitHub, LinkedIn, and email.
-- Animated UI details using Framer Motion and custom reveal/tilt components.
+- `PROFILE` → nama, email, GitHub, LinkedIn, WhatsApp, lokasi
+- `PROJECTS` → tambah project = copy 1 blok `{ ... }`, ganti isinya
+- `JOURNEY` → riwayat pendidikan / organisasi
+- `CERTIFICATES` → tambah sertifikat = copy 1 blok, isi `href` path PDF di `public/certificates/`
+- `ui` → judul halaman, label tombol/menu, metadata, dan pesan status
 
-## Tech Stack
+Tidak perlu buka file lain untuk ganti teks. Icon diatur otomatis di tiap halaman.
 
-- Next.js 15
-- React 18
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Lucide React
-- Vercel
+Untuk screenshot project, simpan gambar asli di `frontend/public/projects/`, lalu isi
+`image` pada project yang sesuai, misalnya `/projects/nama-project.png`. Biarkan
+`image: ""` jika belum ada screenshot; kartu akan menampilkan inisial, bukan gambar
+project lain.
 
-## Getting Started
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Open http://localhost:3000 in your browser.
-
-## Verification
-
-Run the content check:
-
-```bash
-npm run test
-```
-
-Run lint:
-
-```bash
-npm run lint
-```
-
-Run a production build:
-
-```bash
-npm run build
-```
-
-## Project Structure
+## Struktur folder (frontend/)
 
 ```text
-app/          Next.js app routes, page, metadata, and global styles
-components/   Reusable animation and interaction components
-public/       Resume, profile photo, logo, and project assets
-scripts/      Portfolio verification scripts
+frontend/
+  data/portfolio.ts     ← EDIT DI SINI (semua teks website)
+  app/
+    page.tsx            ← About (ambil teks dari data)
+    projects/page.tsx   ← Projects
+    journey/page.tsx    ← Journey
+    certificates/       ← Certificates
+    contact/            ← Contact
+    layout.tsx          ← judul tab browser + bungkus layout
+    globals.css         ← pintu masuk style (jangan edit langsung)
+    styles/             ← 1 file CSS per halaman (about.css, projects.css, ...)
+  components/
+    PortfolioLayout.tsx ← logo + menu + sidebar + dark mode
+    Navbar.tsx          ← menu icon (About/Projects/Journey/Certificates)
+    InteractiveLanyard.tsx ← kartu lanyard 3D (fisika, jangan disentuh kalau ragu)
+    Reveal.tsx          ← animasi fade-in saat scroll
+    TextType.tsx        ← efek ketikan judul
+    Folder.tsx          ← folder skill yang bisa dibuka
+    StarBorder.tsx      ← border animasi sidebar
+  public/
+    profile/            ← foto + logo
+    resume/             ← file CV (Download CV ambil dari sini)
+    certificates/       ← PDF sertifikat
+    lanyard/            ← model 3D kartu (card.glb)
 ```
 
-## Deployment
-
-The site is deployed on Vercel at:
-
-https://izharsusilo.vercel.app
-
-To deploy another copy, import this repository into Vercel or run:
+## Cara jalanin
 
 ```bash
-npx vercel deploy --prod
+cd frontend
+npm install   # sekali saja
+npm run dev   # buka http://localhost:3000
 ```
 
+## Cara cek sebelum push
+
+```bash
+cd frontend
+npm run test    # cek isi wajib ada
+npm run lint    # cek error
+npm run build   # pastikan bisa build
+```
+
+`npm run test` juga mengecek aset lokal, import CSS, dan teks JSX agar tetap
+terpusat di file data. Pemeriksaan ini bukan pengganti tes interaksi browser.
+Sebelum push, pastikan file CSS baru di `frontend/app/styles/` ikut dalam commit.
+
+Untuk tes browser, jalankan server dengan `npm run dev` di terminal pertama,
+lalu `npm run test:browser` di terminal kedua. Tes memakai Chrome/Chromium yang
+sudah terpasang dengan profil sementara, tanpa mengunduh browser atau menulis
+clipboard sistem. Tes mencakup semua halaman pada lebar desktop/mobile,
+navigasi, tema, dan clipboard berhasil/ditolak/tidak tersedia. Jika browser tidak
+terdeteksi, set `BROWSER_PATH` ke executable browser. Server selain port 3000
+bisa dipilih lewat `PORTFOLIO_URL`.
+
+Ubah `main` di GitHub → Vercel otomatis deploy (±1 menit).
+
+## Aturan buat AI / kontributor
+
+- Teks baru taruh di `data/portfolio.ts`, jangan hardcode di page.
+- Style baru taruh di `app/styles/<halaman>.css`, jangan di `globals.css`.
+- Satu library animasi saja: `motion` (jangan tambah framer-motion / gsap lagi).
+- Komponen baru kasih komentar 2-3 baris cara pakainya (lihat contoh di Reveal.tsx).
+- Sebelum bilang selesai: `npm run test` + `npm run lint` + `npm run build` harus hijau.

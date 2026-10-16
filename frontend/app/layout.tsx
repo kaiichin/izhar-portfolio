@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import PortfolioLayout from "../components/PortfolioLayout";
+import { profile, ui } from "../data/portfolio";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -17,36 +18,33 @@ const jetBrainsMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Izhar Octafirlian Susilo | CS Portfolio",
-  description:
-    "Computer Science student building practical software across AI, web applications, and interactive systems.",
+  title: ui.metadata.title,
+  description: ui.metadata.description,
   icons: {
-    icon: "/profile/logo.jpg",
-    shortcut: "/profile/logo.jpg",
-    apple: "/profile/logo.jpg"
+    icon: profile.logoPath,
+    shortcut: profile.logoPath,
+    apple: profile.logoPath
   },
   openGraph: {
-    title: "Izhar Octafirlian Susilo | CS Portfolio",
-    description:
-      "Portfolio for internship opportunities across AI, web applications, and interactive systems.",
+    title: ui.metadata.title,
+    description: ui.metadata.socialDescription,
     url: "/",
-    siteName: "Izhar Octafirlian Susilo",
+    siteName: profile.name,
     images: [
       {
-        url: "/profile/logo.jpg",
+        url: profile.logoPath,
         width: 1024,
         height: 1086,
-        alt: "Izhar Octafirlian Susilo logo"
+        alt: ui.metadata.logoAlt
       }
     ],
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Izhar Octafirlian Susilo | CS Portfolio",
-    description:
-      "Computer Science student building practical software across AI, web applications, and interactive systems.",
-    images: ["/profile/logo.jpg"]
+    title: ui.metadata.title,
+    description: ui.metadata.description,
+    images: [profile.logoPath]
   }
 };
 

@@ -1,6 +1,8 @@
+// Efek ketikan (typing) untuk judul — teks jalan seperti diketik.
+// Contoh: <TextType as="h1" text={["Halo.", "Tentang saya."]} />
+
 "use client";
 
-import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import "./TextType.css";
 
@@ -28,7 +30,16 @@ export default function TextType({
   cursorCharacter = "|",
 }: TextTypeProps) {
   const [displayedText, setDisplayedText] = useState("");
-  const cursorRef = useRef<HTMLSpanElement>(null);
+  const [cursorVisible, setCursorVisible] = useState(true);
+
+  // Kursor kedip pakai CSS (gantiin gsap biar 1 lib animasi saja)
+  useEffect(() => {
+    if (!showCursor) return;
+    const timer = setInterval(() => {
+      setCursorVisible((visible) => !visible);
+    }, 500);
+    return () => clearInterval(timer);
+  }, [showCursor]);
 
   useEffect(() => {
     const texts = Array.isArray(text) ? text : [text];
@@ -69,25 +80,11 @@ export default function TextType({
     };
   }, [deletingSpeed, initialDelay, pauseDuration, text, typingSpeed]);
 
-  useEffect(() => {
-    if (!showCursor || !cursorRef.current) return;
-    const animation = gsap.to(cursorRef.current, {
-      opacity: 0,
-      duration: 0.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "power2.inOut",
-    });
-    return () => {
-      animation.kill();
-    };
-  }, [showCursor]);
-
   return (
     <Component className={`text-type ${className}`}>
       <span>{displayedText}</span>
       {showCursor && (
-        <span ref={cursorRef} className="text-type__cursor">
+        <span className="text-type__cursor" style={{ opacity: cursorVisible ? 1 : 0 }}>
           {cursorCharacter}
         </span>
       )}

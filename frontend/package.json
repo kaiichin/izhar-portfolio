@@ -6,14 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "test": "node scripts/portfolio-check.mjs"
+    "test": "node scripts/portfolio-check.mjs",
+    "test:browser": "node scripts/browser-check.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@react-three/rapier": "^2.2.0",
-    "framer-motion": "^12.38.0",
-    "gsap": "^3.15.0",
     "lucide-react": "^0.468.0",
     "meshline": "^3.3.1",
     "motion": "^13.1.0",

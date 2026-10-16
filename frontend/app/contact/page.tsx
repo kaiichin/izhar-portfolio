@@ -1,6 +1,8 @@
+// Halaman Contact — email / link diedit di data/portfolio.ts (PROFILE).
+
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Check,
   Copy,
@@ -9,93 +11,120 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
-import { profile } from "../../data/portfolio";
+import { profile, ui } from "../../data/portfolio";
 
 export default function ContactPage() {
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copying" | "copied" | "error">("idle");
+  const emailRef = useRef<HTMLSpanElement>(null);
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      if (resetTimer.current !== null) clearTimeout(resetTimer.current);
+    };
+  }, []);
 
   async function copyEmail() {
-    await navigator.clipboard.writeText(profile.email);
-    setCopied(true);
+    if (resetTimer.current !== null) clearTimeout(resetTimer.current);
+    setCopyStatus("copying");
 
-    window.setTimeout(() => {
-      setCopied(false);
-    }, 2000);
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(profile.email);
+      if (!mounted.current) return;
+      setCopyStatus("copied");
+      resetTimer.current = setTimeout(() => setCopyStatus("idle"), 2000);
+    } catch {
+      if (!mounted.current) return;
+      setCopyStatus("error");
+      if (emailRef.current) {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(emailRef.current);
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+      }
+    }
   }
 
   return (
     <section className="content-section contact-page">
-        <h2>Contact</h2>
+      <h2>{ui.contact.title}</h2>
 
-        <div className="page-accent-line" />
+      <div className="page-accent-line" />
 
-        <div className="contact-page-grid">
-          <article className="contact-page-card">
-            <Mail size={29} />
+      <div className="contact-page-grid">
+        <article className="contact-page-card">
+          <Mail size={29} />
 
-            <h3>Email</h3>
+          <h3>{ui.shared.email}</h3>
 
-            <p>
-              Email is the best way to contact me about internships,
-              collaborations, or project opportunities.
-            </p>
+          <p>
+            {ui.contact.emailDescription}
+          </p>
 
-            <div className="email-copy-row">
-              <span>{profile.email}</span>
+          <div className="email-copy-row">
+            <span ref={emailRef}>{profile.email}</span>
 
-              <button onClick={copyEmail}>
-                {copied ? <Check size={15} /> : <Copy size={15} />}
-                {copied ? "Copied" : "Copy"}
-              </button>
-            </div>
-          </article>
+            <button type="button" onClick={copyEmail} disabled={copyStatus === "copying"}>
+              {copyStatus === "copied" ? <Check size={15} /> : <Copy size={15} />}
+              <span aria-live="polite">
+                {copyStatus === "copied" ? ui.contact.copied : copyStatus === "copying" ? ui.contact.copying : ui.contact.copy}
+              </span>
+            </button>
+          </div>
+          <p className="copy-feedback" role="status">
+            {copyStatus === "error" ? ui.contact.copyError : ""}
+          </p>
+        </article>
 
-          <article className="contact-page-card">
-            <MapPin size={29} />
+        <article className="contact-page-card">
+          <MapPin size={29} />
 
-            <h3>Location</h3>
+          <h3>{ui.shared.location}</h3>
 
-            <p>
-              Currently based in {profile.location}. Open to remote and
-              international opportunities.
-            </p>
+          <p>
+            {ui.contact.locationDescription}
+          </p>
 
-            <span className="contact-card-detail">{profile.location}</span>
-          </article>
+          <span className="contact-card-detail">{profile.location}</span>
+        </article>
 
-          <article className="contact-page-card contact-social-card">
-            <h3>Find My Work</h3>
+        <article className="contact-page-card contact-social-card">
+          <h3>{ui.contact.socialTitle}</h3>
 
-            <p>
-              You can see my projects, code, and professional profile through
-              these platforms.
-            </p>
+          <p>
+            {ui.contact.socialDescription}
+          </p>
 
-            <div className="contact-social-row">
-              <a
-                href="https://github.com/kaiichin"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-              >
-                <Github size={24} />
-              </a>
+          <div className="contact-social-row">
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={ui.shared.github}
+            >
+              <Github size={24} />
+            </a>
 
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={24} />
-              </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={ui.shared.linkedin}
+            >
+              <Linkedin size={24} />
+            </a>
 
-              <a href={`mailto:${profile.email}`} aria-label="Email">
-                <Mail size={24} />
-              </a>
-            </div>
-          </article>
-        </div>
+            <a href={`mailto:${profile.email}`} aria-label={ui.shared.email}>
+              <Mail size={24} />
+            </a>
+          </div>
+        </article>
+      </div>
     </section>
   );
 }

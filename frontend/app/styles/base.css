@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f7f5ef;
+  --panel: #fffdf9;
+  --panel-light: #f1eee8;
+  --panel-soft: #f7f3ed;
+  --panel-bright: #fffdfa;
+  --panel-hover: #faf7f2;
+  --panel-hover-warm: #fff9f4;
+  --panel-muted: #eee9e2;
+  --line: #ddd6cc;
+  --line-strong: #d8d0c5;
+  --line-muted: #d3cbc0;
+  --line-deep: #cfc5ba;
+  --text: #2d2a26;
+  --text-soft: #4e4842;
+  --muted: #706a63;
+  --muted-strong: #655e57;
+  --muted-light: #817970;
+  --accent: #d97757;
+  --accent-dark: #b85f43;
+  --accent-border: #c98468;
+  --accent-soft: rgba(217, 119, 87, 0.13);
+  --shadow: 0 18px 45px rgba(79, 62, 50, 0.1);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #111214;
+  --panel: #191a1d;
+  --panel-light: #222328;
+  --panel-soft: #1d1e22;
+  --panel-bright: #202126;
+  --panel-hover: #27282d;
+  --panel-hover-warm: #27282d;
+  --panel-muted: #292a2f;
+  --line: #34363d;
+  --line-strong: #44464f;
+  --line-muted: #3d3f47;
+  --line-deep: #50525c;
+  --text: #f4eee8;
+  --text-soft: #d8cec5;
+  --muted: #aaa097;
+  --muted-strong: #c5bbb2;
+  --muted-light: #91877f;
+  --accent: #e38261;
+  --accent-dark: #f09a79;
+  --accent-border: #b96549;
+  --accent-soft: rgba(227, 130, 97, 0.16);
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background: var(--background);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(217, 119, 87, 0.12), transparent 30%),
+    linear-gradient(rgba(84, 72, 62, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(84, 72, 62, 0.045) 1px, transparent 1px),
+    var(--background);
+  background-size: auto, 48px 48px, 48px 48px, auto;
+  color: var(--text);
+  font-family: var(--font-main), monospace;
+}
+
+html[data-theme="dark"] body {
+  background:
+    linear-gradient(rgba(255, 245, 235, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 245, 235, 0.025) 1px, transparent 1px),
+    var(--background);
+  background-size: 48px 48px, 48px 48px, auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+

@@ -1,3 +1,6 @@
+// Menu navigasi icon (About / Projects / Journey / Certificates).
+// Dipakai di PortfolioLayout. Contact lewat sidebar, bukan menu ini.
+
 "use client";
 
 import {
@@ -14,31 +17,33 @@ import {
   UserRound,
   type LucideIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { ui } from "../data/portfolio";
 import "./Navbar.css";
 
 export type NavPage = "About" | "Projects" | "Journey" | "Certificates" | "Contact";
 
-type NavbarProps = {
-  activePage: NavPage;
+type NavItem = {
+  label: NavPage;
+  title: string;
+  href: string;
+  icon: LucideIcon;
 };
 
-const items: { label: NavPage; title: string; href: string; icon: LucideIcon }[] = [
-  { label: "About", title: "About Me", href: "/", icon: UserRound },
-  { label: "Projects", title: "Projects", href: "/projects", icon: FolderKanban },
-  { label: "Journey", title: "Journey", href: "/journey", icon: Route },
-  { label: "Certificates", title: "Certificates", href: "/certificates", icon: Award },
+const items: NavItem[] = [
+  { label: "About", title: ui.navigation.about, href: "/", icon: UserRound },
+  { label: "Projects", title: ui.navigation.projects, href: "/projects", icon: FolderKanban },
+  { label: "Journey", title: ui.navigation.journey, href: "/journey", icon: Route },
+  { label: "Certificates", title: ui.navigation.certificates, href: "/certificates", icon: Award },
 ];
 
-type AnimatedNavItemProps = (typeof items)[number] & {
+type AnimatedNavItemProps = NavItem & {
   active: boolean;
   mouseX: ReturnType<typeof useMotionValue<number>>;
 };
 
 function AnimatedNavItem({
-  label,
   title,
   href,
   icon: Icon,
@@ -82,7 +87,7 @@ function AnimatedNavItem({
   );
 }
 
-export function NavigationDock({ activePage }: NavbarProps) {
+export function NavigationDock({ activePage }: { activePage: NavPage }) {
   const mouseX = useMotionValue(Infinity);
 
   return (
@@ -100,28 +105,5 @@ export function NavigationDock({ activePage }: NavbarProps) {
         />
       ))}
     </div>
-  );
-}
-
-export default function Navbar({ activePage }: NavbarProps) {
-  return (
-    <nav className="portfolio-navbar" aria-label="Main navigation">
-      <Link
-        href="/"
-        className={`navbar-avatar${activePage === "About" ? " active" : ""}`}
-        aria-label="About"
-        aria-current={activePage === "About" ? "page" : undefined}
-      >
-        <Image
-          src="/profile/logo.jpg"
-          alt="Izhar Octafirlian Susilo"
-          width={42}
-          height={42}
-          priority
-        />
-      </Link>
-
-      <NavigationDock activePage={activePage} />
-    </nav>
   );
 }

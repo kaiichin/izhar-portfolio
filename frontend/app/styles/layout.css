@@ -1,0 +1,325 @@
+/* -------------------- SHARED LAYOUT -------------------- */
+
+.site-logo {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 60;
+  display: flex;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.site-logo img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.standalone-nav-dock {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  z-index: 60;
+  width: max-content;
+  min-height: 80px;
+  align-self: end;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  background: #fffdf9;
+  transform: translateY(1px);
+}
+
+.standalone-nav-dock::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 3px;
+  background: #fffdf9;
+}
+
+.theme-switch {
+  position: absolute;
+  top: 42px;
+  right: 24px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted-strong);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+
+.theme-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.theme-switch-track {
+  width: 42px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--panel-light);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.theme-switch-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--muted-light);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.theme-switch input:checked + .theme-switch-track {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.theme-switch input:checked + .theme-switch-track .theme-switch-thumb {
+  transform: translateX(18px);
+  background: var(--accent);
+}
+
+.theme-switch input:focus-visible + .theme-switch-track {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.portfolio-page {
+  position: relative;
+  width: min(1450px, 100%);
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: 48px;
+  row-gap: 0;
+  padding: 24px 55px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.portfolio-sidebar {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-contact-card {
+  position: absolute;
+  top: 420px;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  z-index: 2;
+  margin: 0;
+}
+
+.sidebar-contact-content {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: #fffdf9;
+  box-shadow: var(--shadow);
+}
+
+.sidebar-contact-heading {
+  padding: 2px 0 14px;
+  text-align: center;
+}
+
+.sidebar-contact-heading h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.sidebar-cv-button {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 13px;
+  border: 1px solid #c98468;
+  border-radius: 10px;
+  color: var(--accent);
+  background: rgba(217, 119, 87, 0.08);
+  font-size: 12px;
+  font-weight: 700;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.sidebar-cv-button:hover {
+  transform: translateY(-2px);
+  color: #2d2a26;
+  background: var(--accent);
+}
+
+.sidebar-cv-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar-contact-heading p {
+  margin: 7px 0 0;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sidebar-contact-row {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 11px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.sidebar-contact-row + .sidebar-contact-row {
+  border-top: 1px solid var(--line);
+}
+
+.sidebar-contact-row svg {
+  width: 19px;
+  height: 19px;
+  color: var(--accent);
+}
+
+.sidebar-contact-row span {
+  color: #817970;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sidebar-contact-row p {
+  margin: 4px 0 0;
+  color: #2d2a26;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.sidebar-social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.sidebar-social-links a {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d8d0c5;
+  border-radius: 10px;
+  color: #756f68;
+  background: #f1eee8;
+  transition: color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.sidebar-social-links a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217, 119, 87, 0.65);
+  color: var(--accent);
+}
+
+.sidebar-social-links svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Shared content rules retained when globals.css was split into page files. */
+.portfolio-content {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+  height: fit-content;
+  max-height: 100%;
+  align-self: start;
+  border: 1px solid var(--line);
+  border-radius: 0 20px 20px 20px;
+  background: #fffdf9;
+  box-shadow: var(--shadow);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217, 119, 87, 0.42) transparent;
+}
+
+.portfolio-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.portfolio-content::-webkit-scrollbar-track {
+  background: transparent;
+  margin-block: 14px;
+}
+
+.portfolio-content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(217, 119, 87, 0.42);
+  background-clip: padding-box;
+}
+
+.portfolio-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 119, 87, 0.72);
+  background-clip: padding-box;
+}
+
+.content-section {
+  padding: 34px 38px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 30px;
+}
+
+.page-accent-line {
+  width: 39px;
+  height: 4px;
+  margin: 15px 0 28px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.center-title {
+  margin: 42px 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+

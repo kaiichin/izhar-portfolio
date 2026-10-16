@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { CSSProperties, MouseEvent, ReactNode } from "react";
+import { ui } from "../data/portfolio";
 import "./Folder.css";
 
 type FolderProps = {
@@ -76,7 +77,7 @@ export default function Folder({
           tabIndex={0}
           role="button"
           aria-expanded={open}
-          aria-label={open ? "Close skills folder" : "Open skills folder"}
+          aria-label={open ? ui.about.closeFolder : ui.about.openFolder}
         >
           <div className="rb-folder-back">
             {papers.map((item, index) => item && (

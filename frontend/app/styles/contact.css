@@ -1,0 +1,89 @@
+/* -------------------- CONTACT -------------------- */
+
+.contact-page-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.contact-page-card {
+  padding: 28px;
+  border: 1px solid #ddd6cc;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fffdfa, #f7f3ed);
+  text-align: center;
+}
+
+.contact-page-card h2 {
+  margin: 0 0 16px;
+  font-size: 21px;
+}
+
+.contact-page-card p {
+  color: #655e57;
+  line-height: 1.6;
+}
+
+.email-copy-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 9px;
+  background: #eee9e2;
+}
+
+.email-copy-row span {
+  color: #2d2a26;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.email-copy-row button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  border: 0;
+  padding: 6px 9px;
+  border-radius: 6px;
+  color: #2d2a26;
+  background: var(--accent);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.email-copy-row button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.copy-feedback:empty {
+  display: none;
+}
+
+.contact-card-detail {
+  display: grid;
+  place-items: center;
+  min-height: 130px;
+  color: var(--accent);
+}
+
+.contact-social-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.contact-social-row a {
+  color: var(--accent);
+}
+
+.contact-social-row a:hover {
+  color: #b85f43;
+}
+

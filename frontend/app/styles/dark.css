@@ -1,0 +1,102 @@
+/* -------------------- DARK THEME -------------------- */
+
+html[data-theme="dark"] .standalone-nav-dock,
+html[data-theme="dark"] .standalone-nav-dock::after,
+html[data-theme="dark"] .sidebar-contact-content,
+html[data-theme="dark"] .portfolio-content {
+  background: var(--panel);
+}
+
+html[data-theme="dark"] .sidebar-contact-row span {
+  color: var(--muted-light);
+}
+
+html[data-theme="dark"] .sidebar-contact-row p,
+html[data-theme="dark"] .intro-card,
+html[data-theme="dark"] .email-copy-row span,
+html[data-theme="dark"] .email-copy-row button {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .sidebar-social-links a,
+html[data-theme="dark"] .email-copy-row,
+html[data-theme="dark"] .project-tags span {
+  border-color: var(--line-strong);
+  color: var(--muted);
+  background: var(--panel-light);
+}
+
+html[data-theme="dark"] .intro-card,
+html[data-theme="dark"] .details-card,
+html[data-theme="dark"] .strength-card,
+html[data-theme="dark"] .focus-card,
+html[data-theme="dark"] .journey-card,
+html[data-theme="dark"] .contact-page-card,
+html[data-theme="dark"] .certificate-content,
+html[data-theme="dark"] .skill-card {
+  border-color: var(--line);
+  background: linear-gradient(135deg, var(--panel-bright), var(--panel-soft));
+  box-shadow: var(--shadow);
+}
+
+html[data-theme="dark"] .intro-card:hover,
+html[data-theme="dark"] .details-card:hover,
+html[data-theme="dark"] .strength-card:hover,
+html[data-theme="dark"] .focus-card:hover,
+html[data-theme="dark"] .journey-card:hover,
+html[data-theme="dark"] .certificate-content:hover,
+html[data-theme="dark"] .skill-card:hover {
+  border-color: var(--accent);
+  background: linear-gradient(145deg, var(--panel-hover-warm), var(--panel-hover));
+  box-shadow:
+    0 18px 34px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(227, 130, 97, 0.15);
+}
+
+html[data-theme="dark"] .focus-card p,
+html[data-theme="dark"] .strength-card p,
+html[data-theme="dark"] .highlight-list,
+html[data-theme="dark"] .journey-intro,
+html[data-theme="dark"] .journey-card p,
+html[data-theme="dark"] .journey-card li,
+html[data-theme="dark"] .certificate-description,
+html[data-theme="dark"] .project-description {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .journey-subtitle,
+html[data-theme="dark"] .journey-future-card p,
+html[data-theme="dark"] .contact-page-card p,
+html[data-theme="dark"] .certificate-issuer {
+  color: var(--muted-strong);
+}
+
+html[data-theme="dark"] .language-bar,
+html[data-theme="dark"] .certificate-timeline::before {
+  background: var(--line-muted);
+}
+
+html[data-theme="dark"] .project-art {
+  background: linear-gradient(135deg, var(--panel-light), var(--panel));
+}
+
+html[data-theme="dark"] .journey-date-pill,
+html[data-theme="dark"] .journey-marker {
+  border-color: var(--line-strong);
+  color: var(--text-soft);
+  background: var(--panel-soft);
+}
+
+html[data-theme="dark"] .journey-marker {
+  color: var(--accent);
+  box-shadow: 0 0 0 7px var(--panel);
+}
+
+html[data-theme="dark"] .certificate-dot {
+  border-color: var(--panel);
+}
+
+html[data-theme="dark"] .sidebar-cv-button:hover {
+  color: #171513;
+}
+
