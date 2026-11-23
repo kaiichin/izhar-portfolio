@@ -6,6 +6,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import {
   BriefcaseBusiness,
+  Building2,
   Download,
   Github,
   Linkedin,
@@ -103,6 +104,14 @@ export default function PortfolioLayout({ children }: { children: ReactNode }) {
                 <Download aria-hidden="true" />
                 {ui.shared.downloadCv}
               </a>
+            </div>
+
+            <div className="sidebar-contact-row">
+              <Building2 aria-hidden="true" />
+              <div>
+                <span>{ui.shared.currentRole}</span>
+                <p>{profile.currentRole}</p>
+              </div>
             </div>
 
             <div className="sidebar-contact-row">

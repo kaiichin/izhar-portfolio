@@ -2,24 +2,19 @@
 // Icon ditaruh di sini supaya file data tetap simpel (teks saja).
 
 import {
+  BookOpen,
   Bot,
-  Boxes,
-  Code2,
-  Container,
+  BriefcaseBusiness,
   Database,
-  FileCode2,
-  Gamepad2,
+  FileSpreadsheet,
   GitBranch,
-  Github,
-  Globe2,
-  PanelsTopLeft,
-  Puzzle,
-  RefreshCw,
+  GraduationCap,
+  LayoutTemplate,
+  PenTool,
   ScanSearch,
-  Sparkles,
-  Terminal,
+  Send,
+  TrendingUp,
   Users,
-  Workflow,
 } from "lucide-react";
 import Reveal from "../components/Reveal";
 import TextType from "../components/TextType";
@@ -35,22 +30,16 @@ import {
 } from "../data/portfolio";
 
 // Urutan icon harus sama dengan urutan daftar di data/portfolio.ts
-const focusIcons = [PanelsTopLeft, ScanSearch, Gamepad2, Workflow];
+const focusIcons = [BriefcaseBusiness, BookOpen, TrendingUp, GraduationCap];
 const skillIcons = [
-  PanelsTopLeft,
-  Code2,
-  Sparkles,
-  Boxes,
-  Terminal,
   Database,
-  FileCode2,
-  Globe2,
+  Send,
   GitBranch,
-  Github,
-  Container,
-  Bot,
+  PenTool,
+  FileSpreadsheet,
+  LayoutTemplate,
 ];
-const strengthIcons = [RefreshCw, Users, Puzzle];
+const strengthIcons = [Bot, Users, ScanSearch];
 
 export default function AboutPage() {
   return (
@@ -78,7 +67,7 @@ export default function AboutPage() {
 
       <div className="focus-grid">
         {focusAreas.map((area, index) => {
-          const Icon = focusIcons[index] ?? PanelsTopLeft;
+          const Icon = focusIcons[index] ?? BriefcaseBusiness;
 
           return (
             <Reveal key={area.title} delay={index * 0.08}>
@@ -140,7 +129,7 @@ export default function AboutPage() {
               expandedContent={
                 <div className="folder-skills-grid">
                   {skills.map((skill, index) => {
-                    const Icon = skillIcons[index] ?? Code2;
+                    const Icon = skillIcons[index] ?? Database;
 
                     return (
                       <article className="skill-card" key={skill.name}>
@@ -164,7 +153,7 @@ export default function AboutPage() {
 
       <div className="strength-grid">
         {strengths.map((strength, index) => {
-          const Icon = strengthIcons[index] ?? Puzzle;
+          const Icon = strengthIcons[index] ?? ScanSearch;
 
           return (
             <Reveal key={strength.title} delay={index * 0.08}>

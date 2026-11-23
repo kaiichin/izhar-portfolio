@@ -100,7 +100,9 @@
 
 
 .certificate-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-top: 14px;
   color: var(--accent);
   font-size: 13px;
@@ -109,5 +111,23 @@
 
 .certificate-link:hover {
   text-decoration: underline;
+}
+
+.certificate-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.certificate-note svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.certificate-note p {
+  margin: 0;
 }
 

@@ -34,10 +34,11 @@ export type JourneyItem = {
 // Tampil di sidebar kiri + halaman contact.
 export const profile = {
   name: "Izhar Octafirlian Susilo",
-  role: "Software Developer",
+  role: "System & Business Analyst",
+  currentRole: "System Analyst Intern at RPX",
   location: "Indonesia",
   email: "izharsusilo12@gmail.com",
-  availability: "Looking for Internship",
+  availability: "Open to Future SA/BA Roles",
   github: "https://github.com/kaiichin",
   linkedin: "https://www.linkedin.com/in/izhar-octafirlian-susilo",
   whatsapp: "https://wa.me/6281524102005",
@@ -60,24 +61,25 @@ export const ui = {
     darkMode: "Dark Mode",
     contactInformation: "Contact information",
     downloadCv: "Download CV",
+    currentRole: "Current Role",
     location: "Location",
-    availability: "Availability",
+    availability: "Status",
     email: "Email",
     github: "GitHub",
     linkedin: "LinkedIn",
     whatsapp: "WhatsApp",
   },
   about: {
-    greetings: ["Hello, welcome.", "A little about me."],
+    greetings: ["Hello, welcome.", "System & Business Analyst."],
     focus: "Primary Focus",
     details: "Highlights & Languages",
     highlights: "Highlights",
     languages: "Languages",
-    techStack: "Tech Stack",
-    folderHint: "Open skill folder",
-    openFolder: "Open skills folder",
-    closeFolder: "Close skills folder",
-    strengths: "Strengths",
+    techStack: "Analyst & Tech Toolkit",
+    folderHint: "Open toolkit folder",
+    openFolder: "Open toolkit folder",
+    closeFolder: "Close toolkit folder",
+    strengths: "How I Work",
   },
   projects: {
     title: "My Projects",
@@ -86,9 +88,11 @@ export const ui = {
   },
   journey: {
     title: "My Journey",
-    intro: "My path so far through education, international exchange, and organization experience.",
+    intro:
+      "My path so far across industry internship experience, international exchange, student organizations, and Computer Science studies.",
     futureTitle: "What comes next?",
-    futureText: "I am continuing to build stronger projects and prepare for internship opportunities in software development.",
+    futureText:
+      "Wrapping up my System Analyst internship at RPX and finishing my final-year thesis at BINUS—while growing in System & Business Analysis and exploring future career and Master's opportunities.",
   },
   certificates: {
     title: "My Certificates",
@@ -98,19 +102,24 @@ export const ui = {
   },
   contact: {
     title: "Contact",
-    emailDescription: "Email is the best way to contact me about internships, collaborations, or project opportunities.",
+    emailDescription:
+      "Email is the best way to contact me about internships, collaborations, or project opportunities.",
     locationDescription: `Currently based in ${profile.location}. Open to remote and international opportunities.`,
     socialTitle: "Find My Work",
-    socialDescription: "You can see my projects, code, and professional profile through these platforms.",
+    socialDescription:
+      "You can see my projects, code, and professional profile through these platforms.",
     copy: "Copy",
     copied: "Copied",
     copying: "Copying…",
-    copyError: "Could not copy automatically. Select the email address above and copy it manually.",
+    copyError:
+      "Could not copy automatically. Select the email address above and copy it manually.",
   },
   metadata: {
-    title: `${profile.name} | CS Portfolio`,
-    description: "Computer Science student building practical software across AI, web applications, and interactive systems.",
-    socialDescription: "Portfolio for internship opportunities across AI, web applications, and interactive systems.",
+    title: `${profile.name} | System & Business Analyst`,
+    description:
+      "System Analyst Intern at RPX Logistics and Computer Science student focused on business workflows, API blueprints, SQL data checks, and integration testing.",
+    socialDescription:
+      "System Analyst & Business Analyst portfolio covering logistics workflows, FSD blueprints, SQL data checking, and API testing.",
     logoAlt: `${profile.name} logo`,
   },
 };
@@ -120,68 +129,62 @@ export const ui = {
 // jadi di sini cukup tulis teks saja.
 
 export const aboutIntro = [
-  "I'm Izhar, a Computer Science student at BINUS University. Recently completed an exchange program at Saxion University of Applied Sciences, studied Creative Media and Game Technologies (CMGT).",
-  "Currently looking for a software development internship where I can contribute to real projects and continue building my skills. I'm interested in AI Engineer, Web Programming and Game Engineer. Outside of coding, I'm a big fan of games and football.",
+  "I'm Izhar, a Computer Science student at BINUS University and currently a System Analyst Intern at RPX Logistics. I contributed to RPX's Bea Cukai (CEISA 4.0) customs integration—working on blueprints, SQL data checks, API testing, and user meetings.",
+  "Before that, I completed an exchange at Saxion University in the Netherlands building Unity games, and built web, AI, and internal system projects at BINUS. That mix helps me bridge business needs and developers cleanly. Outside of work, I'm a big fan of games and football.",
 ];
 
 export const focusAreas = [
   {
-    title: "Web Development",
-    text: "Creating clean, responsive websites with modern frontend and backend technologies",
+    title: "System Analyst Internship",
+    text: "Growing in my role at RPX Logistics through real projects, specs, data checks, and team meetings.",
   },
   {
-    title: "Machine Learning & Computer Vision",
-    text: "Training and evaluating models using data",
+    title: "Finishing My Thesis",
+    text: "Working toward completing my final-year Computer Science thesis at BINUS University.",
   },
   {
-    title: "Game Engineering",
-    text: "Exploring gameplay programming, game mechanics, and interactive systems using Unity",
+    title: "Career & Skill Growth",
+    text: "Sharpening System & Business Analyst skills through courses, real practice, and preparing for my next role.",
   },
   {
-    title: "AI & Automation",
-    text: "Learning how AI tools and automation can improve useful products",
+    title: "Master's Study Abroad",
+    text: "Exploring and preparing for a future Master's degree abroad to keep growing internationally.",
   },
 ];
 
 export const highlights = [
-  "Built and deployed computer vision applications",
-  "Developed web platforms with FastAPI and Laravel",
-  "Built a Unity game with an international team",
-  "Led student events and earned Best Mentor at BINUS",
+  "Contributed to RPX's Bea Cukai (CEISA 4.0) integration—joining user meetings, drafting blueprints, checking SQL data, and testing APIs",
+  "Completed an exchange at Saxion University in the Netherlands and built a 3D Unity game for a Dutch client",
+  "Active in HIMTI BINUS across event committees (HIMTI Care, HISHOT, SESVENT) and earned Best Mentor",
+  "Currently finishing my final-year Computer Science thesis at BINUS University",
 ];
 
 export const languages = [
-  { name: "English", level: "Fluent", width: "85%" },
+  { name: "English", level: "Upper-Intermediate · IELTS 6.5", width: "65%" },
   { name: "Indonesian", level: "Native", width: "100%" },
 ];
 
 export const skills = [
-  { name: "React + Next.js", category: "Web" },
-  { name: "TypeScript", category: "Language" },
-  { name: "Tailwind CSS", category: "Interface" },
-  { name: "Unity + C#", category: "Interactive" },
-  { name: "Python", category: "Language" },
-  { name: "SQL", category: "Database" },
-  { name: "JavaScript", category: "Language" },
-  { name: "HTML + CSS", category: "Frontend" },
-  { name: "Git", category: "Versioning" },
-  { name: "GitHub", category: "Versioning" },
-  { name: "Docker", category: "Deployment" },
-  { name: "AI Tools", category: "Automation" },
+  { name: "SQL", category: "Data & Queries" },
+  { name: "Postman", category: "API Testing" },
+  { name: "Git & GitHub", category: "Version Control" },
+  { name: "Excalidraw & Draw.io", category: "Diagrams" },
+  { name: "Excel & Sheets", category: "Data Checks" },
+  { name: "Figma", category: "UI Mockups" },
 ];
 
 export const strengths = [
   {
-    title: "Adaptability",
-    text: "I adapt quickly to different technologies, projects, and environments.",
+    title: "Use AI Smartly",
+    text: "I use AI tools to learn faster, organize notes, and speed up repetitive tasks—while always checking the real facts myself.",
   },
   {
-    title: "Teamwork",
-    text: "I collaborate effectively across academic, international, and organization teams.",
+    title: "Ask & Listen First",
+    text: "I ask questions early and listen closely to users, mentors, and developers so everyone is aligned before building.",
   },
   {
-    title: "Problem Solving",
-    text: "I break unfamiliar problems into smaller steps and test practical solutions.",
+    title: "Test, Then Confirm",
+    text: "I investigate problems with the data I have first, form a clear assumption, and confirm it with my mentor or team.",
   },
 ];
 
@@ -229,9 +232,19 @@ export const journeyItems: JourneyItem[] = [
     title: "BINUS University",
     subtitle: "Computer Science – Global Class",
     points: [
-      "Studying Computer Science with interest in web development, AI, and game technology.",
-      "Building practical projects to improve technical and problem-solving skills.",
-      "Developing experience through university coursework and team projects.",
+      "Studying Computer Science and building hands-on projects across web apps, computer vision, NLP, and internal systems.",
+      "Collaborated on university coursework, data analysis, and software team projects.",
+      "Currently finishing my final-year thesis while completing my System Analyst internship.",
+    ],
+  },
+  {
+    date: "2024 – 2025",
+    title: "HIMTI BINUS University",
+    subtitle: "Organization & Committee Experience",
+    points: [
+      "Active in HIMTI Care and served on event committees for HISHOT (Sponsorship) and SESVENT (Equipment & Security).",
+      "Worked with teams on event planning, partner outreach, and on-site logistics.",
+      "Earned Best Mentor while guiding fellow students and coordinating across teams.",
     ],
   },
   {
@@ -239,19 +252,19 @@ export const journeyItems: JourneyItem[] = [
     title: "Saxion University of Applied Sciences",
     subtitle: "Exchange Student – Creative Media & Game Technologies",
     points: [
-      "Joined an international exchange experience in the Netherlands.",
-      "Studied creative technology, game development, and interactive systems.",
-      "Gained experience adapting to a new academic and international environment.",
+      "Completed an international exchange program in the Netherlands.",
+      "Built a 3D Unity game with an international team for a Dutch client alongside VR and interactive projects.",
+      "Strengthened cross-cultural communication and teamwork in an international environment.",
     ],
   },
   {
-    date: "2024 – 2025",
-    title: "HIMTI BINUS University",
-    subtitle: "Organization and Committee Experience",
+    date: "Sep 2026 – Present",
+    title: "RPX Logistics",
+    subtitle: "System Analyst Intern",
     points: [
-      "Contributed to student organization activities and university events.",
-      "Worked with teams on event preparation, coordination, and participant support.",
-      "Improved communication, teamwork, and leadership experience.",
+      "Contributed to RPX's Bea Cukai (CEISA 4.0) customs integration—helping write an API blueprint (FSD), map fields, and test endpoints in Postman.",
+      "Checked SQL outputs against real warehouse exports to investigate duplicate or missing rows, and helped optimize a live query.",
+      "Joined engineering meetings, airport warehouse observations, and Ops user checks, plus logged clear bug tickets in Odoo and sketched Figma UI mockups.",
     ],
   },
 ];

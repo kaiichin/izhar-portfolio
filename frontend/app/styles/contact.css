@@ -6,6 +6,10 @@
 }
 
 .contact-page-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   padding: 28px;
   border: 1px solid #ddd6cc;
   border-radius: 14px;
@@ -13,12 +17,18 @@
   text-align: center;
 }
 
-.contact-page-card h2 {
-  margin: 0 0 16px;
-  font-size: 21px;
+.contact-page-card > svg {
+  color: var(--accent);
+}
+
+.contact-page-card h2,
+.contact-page-card h3 {
+  margin: 0;
+  font-size: 19px;
 }
 
 .contact-page-card p {
+  margin: 0;
   color: #655e57;
   line-height: 1.6;
 }
@@ -67,10 +77,10 @@
 }
 
 .contact-card-detail {
-  display: grid;
-  place-items: center;
-  min-height: 130px;
+  margin-top: 6px;
   color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .contact-social-row {

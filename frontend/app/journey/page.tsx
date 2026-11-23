@@ -5,6 +5,7 @@
 import { motion } from "motion/react";
 import {
   BriefcaseBusiness,
+  Building2,
   CalendarDays,
   Globe2,
   GraduationCap,
@@ -13,12 +14,12 @@ import {
 import { journeyItems, ui } from "../../data/portfolio";
 
 // Urutan icon harus sama dengan urutan daftar di data/portfolio.ts
-const journeyIcons = [GraduationCap, Globe2, Users];
+const journeyIcons = [GraduationCap, Users, Globe2, Building2];
 
 export default function JourneyPage() {
   return (
     <section className="content-section journey-page">
-      <h2>{ui.journey.title}</h2>
+      <h1 className="page-title">{ui.journey.title}</h1>
 
       <div className="page-accent-line" />
 

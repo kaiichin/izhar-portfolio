@@ -6,7 +6,7 @@ import { projects, ui } from "../../data/portfolio";
 export default function ProjectsPage() {
   return (
     <section className="content-section projects-page">
-      <h2>{ui.projects.title}</h2>
+      <h1 className="page-title">{ui.projects.title}</h1>
 
       <div className="page-accent-line" />
 

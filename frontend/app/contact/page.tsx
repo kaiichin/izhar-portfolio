@@ -52,7 +52,7 @@ export default function ContactPage() {
 
   return (
     <section className="content-section contact-page">
-      <h2>{ui.contact.title}</h2>
+      <h1 className="page-title">{ui.contact.title}</h1>
 
       <div className="page-accent-line" />
 

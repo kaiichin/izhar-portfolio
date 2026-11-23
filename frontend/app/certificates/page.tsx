@@ -9,7 +9,7 @@ import { certificates, ui } from "../../data/portfolio";
 export default function CertificatesPage() {
   return (
     <section className="content-section certificates-page">
-      <h2>{ui.certificates.title}</h2>
+      <h1 className="page-title">{ui.certificates.title}</h1>
 
       <div className="page-accent-line" />
 
